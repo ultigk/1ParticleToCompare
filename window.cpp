@@ -1,5 +1,5 @@
 #include "window.h"
-
+#include "partical_system.h"
 
 
 Window::Window(const std::string& title, const sf::Vector2u& size)
@@ -20,7 +20,7 @@ Window::~Window()
 
 
 
-void Window::Update()
+void Window::Update(const float dt)
 {
     sf::Event event;
     while (window_.pollEvent(event))
@@ -58,7 +58,10 @@ void Window::Draw(sf::Drawable& drawable_object)
     window_.draw(drawable_object);
 }
 
-
+void Window::Draw(Particle& particle)
+{
+    particle.Render(window_);
+}
 
 void Window::EndDraw()
 {
@@ -85,7 +88,8 @@ void Window::Create()
 {
     window_.create(
         sf::VideoMode(default_size_.x, default_size_.y),
-        default_title_
+        default_title_,
+        sf::Style::Titlebar | sf::Style::Close
     );
 }
 

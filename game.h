@@ -1,6 +1,8 @@
 #pragma once
 
 #include "window.h"
+#include "partical_system.h"
+
 
 
 class Game
@@ -10,17 +12,14 @@ public:
     virtual ~Game() = default;
     
     void Run();
-    void Update();
+    void HandleInput();
+    void Update(const float dt);
     void Render();
 
 
 private:
     Window main_window_;
 
-    sf::CircleShape ball_;
-    sf::Texture ball_texture_;
-    void MoveBall();
-
-    sf::Vector2f increment_;
+    Particle particle_;
 };
 

@@ -2,6 +2,7 @@
 
 #include <string>
 #include <SFML/Graphics.hpp>
+#include "partical_system.h"
 
 
 
@@ -11,9 +12,10 @@ public:
     Window(const std::string& title, const sf::Vector2u& size);
     virtual ~Window();
 
-    void Update();
+    void Update(const float dt);
     void BeginDraw();
     void Draw(sf::Drawable& drawable_object);
+    void Draw(Particle& particle);
     void EndDraw();
 
     bool CheckIsDone();
